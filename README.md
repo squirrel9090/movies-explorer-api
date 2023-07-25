@@ -21,7 +21,7 @@
 - MongoDB
 - Mongoose
 - ESLint и pretterrc
-- Joi
+- Joi и celebrate
 - Winston - логирование ошибок & запросов
 
 **Работа с сервером:**

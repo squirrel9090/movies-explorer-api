@@ -5,9 +5,9 @@ const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const auth = require('./middlewares/auth');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { createUser, loginUser } = require('./controllers/users');
 const { createUserJoi, loginJoi } = require('./middlewares/validation');
+const { createUser, loginUser } = require('./controllers/users');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const router = require('./routes/router');
 
@@ -18,11 +18,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 mongoose.connect(MONGO_URL);
-
-app.post('/signin', loginJoi, loginUser);
-app.post('/signup', createUserJoi, createUser);
-
 app.use(requestLogger);
+
+app.post('/signup', createUserJoi, createUser);
+app.post('/signin', loginJoi, loginUser);
 
 app.use(auth);
 app.use(router);

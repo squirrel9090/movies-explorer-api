@@ -20,8 +20,8 @@
 - Express
 - MongoDB
 - Mongoose
-- ESLint
-- Clebrate & Joi
+- ESLint и pretterrc
+- Joi
 - Winston - логирование ошибок & запросов
 
 **Работа с сервером:**

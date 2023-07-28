@@ -18,7 +18,14 @@ const createMovies = (req, res, next) => {
     country,
     director,
     duration,
-    year, description, image, trailer, nameRU, nameEN, thumbnail, movieId,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
   } = req.body;
 
   movieModel
@@ -29,7 +36,7 @@ const createMovies = (req, res, next) => {
       year,
       description,
       image,
-      trailer,
+      trailerLink,
       nameRU,
       nameEN,
       thumbnail,

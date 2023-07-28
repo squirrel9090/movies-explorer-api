@@ -4,12 +4,10 @@ const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const auth = require('./middlewares/auth');
-const { createUserJoi, loginJoi } = require('./middlewares/validation');
-const { createUser, loginUser } = require('./controllers/users');
+
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const router = require('./routes/router');
+const router = require('./routes/index');
 
 const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 const app = express();
@@ -20,10 +18,6 @@ app.use(express.json());
 mongoose.connect(MONGO_URL);
 app.use(requestLogger);
 
-app.post('/signup', createUserJoi, createUser);
-app.post('/signin', loginJoi, loginUser);
-
-app.use(auth);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());

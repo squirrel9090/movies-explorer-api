@@ -5,6 +5,10 @@ const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
 
 const getMovies = (req, res, next) => {
+  console.log('УТОПИя');
+  console.log(req.params._id);
+  console.log('love');
+  console.log(req.user._id);
   movieModel
     .find({ owner: req.user._id })
     .then((movies) => {
@@ -55,6 +59,8 @@ const createMovies = (req, res, next) => {
 };
 
 const deleteMovie = (req, res, next) => {
+  console.log(req.params);
+  console.log(req.user._id);
   movieModel
     .findById(req.params._id)
     .then((movie) => {
